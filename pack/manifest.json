@@ -1,0 +1,23 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Pack name here",
+        "description": "This is an example pack on how to render custom capes with elytra support - Made by MiniMine Productions",
+        "uuid": "2f695915-4c9a-4805-a6c2-633c7d24dd3f",
+        "version": [ 0, 10, 0 ],
+        "min_engine_version": [ 1, 16, 0 ]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "6a91bf70-3902-4a11-9c8a-1d4c9ae678e4",
+            "version": [ 1, 0, 1 ]
+        }
+        ],
+	"subpacks": [
+	],
+"settings": [
+ 
+
+  ]
+ }
