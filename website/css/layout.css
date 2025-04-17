@@ -1,0 +1,80 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    background-color: var(--dark-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+main {
+    background-color: var(--dark-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.content {
+    padding: 30px;
+}
+
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color);
+    background-color: var(--dark-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+

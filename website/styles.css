@@ -1,0 +1,13 @@
+/* Main CSS file - now imports modular components */
+@import 'css/fonts.css';
+@import 'css/variables.css';
+@import 'css/base.css';
+@import 'css/layout.css';
+@import 'css/components.css';
+@import 'css/modals.css';
+@import 'css/forms.css';
+@import 'css/cape-editor.css';
+@import 'css/preview.css';
+@import 'css/responsive.css';
+
+/* removed all direct CSS styling - moved to individual files */

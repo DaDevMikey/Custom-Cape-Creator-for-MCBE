@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #41887e;
+    --secondary-color: #55b3a3;
+    --accent-color: #6dcbc0;
+    --dark-color: #1a1a1a;
+    --darker-color: #111111;
+    --light-color: #333333;
+    --text-color: #e8e8e8;
+    --error-color: #E74C3C;
+    --success-color: #2ECC71;
+    --warning-color: #F39C12;
+    --btn-hover: #55c7b8;
+    --btn-active: #398f86;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    --transition: all 0.3s ease;
+    --border-radius: 0;
+    --font-main: 'Minecraft', 'Montserrat', 'Segoe UI', sans-serif;
+    --modal-bg-opacity: 0.7;
+    --modal-animation-duration: 300ms;
+    --modal-max-width: 800px;
+}
+

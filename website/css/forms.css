@@ -1,0 +1,110 @@
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--light-color);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 203, 192, 0.3);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.cape-selector {
+    padding: 15px;
+    background-color: rgba(65, 136, 126, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cape-selector select {
+    flex: 1;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary-color);
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-color);
+    transition: .4s;
+    border: 1px solid var(--primary-color);
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--primary-color);
+    transition: .4s;
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--light-color);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+}
+
+.toggle-label {
+    position: absolute;
+    font-size: 0.7rem;
+    color: var(--text-color);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.toggle-label:first-of-type {
+    left: 7px;
+}
+
+.toggle-label:last-of-type {
+    right: 7px;
+}

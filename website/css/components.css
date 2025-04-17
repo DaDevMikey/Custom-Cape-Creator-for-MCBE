@@ -1,0 +1,138 @@
+.nav-btn {
+    background-color: var(--dark-color);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.btn {
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.btn:active {
+    background-color: var(--btn-active);
+}
+
+.prev-btn {
+    background-color: #495057;
+}
+
+.prev-btn:hover {
+    background-color: #5a6268;
+}
+
+.download-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Steps navigation */
+.steps-container {
+    padding: 20px;
+    background-color: rgba(65, 136, 126, 0.2);
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.steps::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    background-color: var(--primary-color);
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.step:hover {
+    transform: translateY(-3px);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    transition: var(--transition);
+}
+
+.step.active .step-number {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.step.completed .step-number {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.step-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.step.active .step-label {
+    color: var(--primary-color);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+

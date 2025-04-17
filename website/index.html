@@ -1,0 +1,343 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Cape Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <!-- Setup import maps for ES modules -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="/logo.png" alt="Among Us C Logo" width="50" height="50">
+                <h1>Minecraft Cape Creator</h1>
+            </div>
+            <nav>
+                <button id="tutorial-btn" class="nav-btn">Tutorial</button>
+                <button id="donate-btn" class="nav-btn">Donate</button>
+            </nav>
+        </header>
+
+        <main>
+            <div class="steps-container">
+                <div class="steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Pack Info</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Upload Capes</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Preview</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Download</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Step 1: Pack Information -->
+                <section id="step1" class="step-content active">
+                    <h2>Create Your Cape Pack</h2>
+                    <p>Let's start by setting up your cape pack information.</p>
+                    
+                    <div class="form-group">
+                        <label for="pack-name">Pack Name:</label>
+                        <input type="text" id="pack-name" placeholder="My Awesome Capes" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pack-description">Pack Description:</label>
+                        <textarea id="pack-description" placeholder="A collection of my custom cape designs" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="creator-name">Creator Name:</label>
+                        <input type="text" id="creator-name" placeholder="Your Username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pack-version">Pack Version:</label>
+                        <input type="text" id="pack-version" value="1.0.0" placeholder="1.0.0">
+                    </div>
+                    
+                    <div class="buttons">
+                        <button id="step1-next" class="btn next-btn">Next: Upload Capes</button>
+                    </div>
+                </section>
+
+                <!-- Step 2: Upload Capes -->
+                <section id="step2" class="step-content">
+                    <h2>Upload Your Cape Designs</h2>
+                    <p>Add one or more cape designs to your pack. Drag and drop images or click to select files.</p>
+                    
+                    <div class="cape-gallery">
+                        <div id="cape-uploader" class="cape-upload-area">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p>Drag & drop cape images or click to browse</p>
+                            <span class="format-note">Supported formats: PNG (128×64px recommended)</span>
+                            <input type="file" id="cape-file-input" accept=".png,.jpg,.jpeg" multiple hidden>
+                        </div>
+                        
+                        <div id="cape-list" class="cape-items">
+                            <!-- Cape items will be added dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="cape-tips">
+                        <h3>Tips for optimal capes:</h3>
+                        <ul>
+                            <li>Use PNG format for best quality</li>
+                            <li>Recommended size: 128×64 pixels</li>
+                            <li>Keep transparent areas for proper rendering</li>
+                            <li>Each cape needs a unique name</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="buttons">
+                        <button id="step2-prev" class="btn prev-btn">Previous: Pack Info</button>
+                        <button id="step2-next" class="btn next-btn">Next: Preview</button>
+                    </div>
+                </section>
+
+                <!-- Step 3: Preview -->
+                <section id="step3" class="step-content">
+                    <h2>Preview Your Cape Pack</h2>
+                    <p>Here's how your cape pack is configured. Review the details below before downloading.</p>
+                    
+                    <div class="preview-container">
+                        <div class="preview-pack-info">
+                            <h3>Pack Information</h3>
+                            <table>
+                                <tr>
+                                    <th>Pack Name:</th>
+                                    <td id="preview-pack-name"></td>
+                                </tr>
+                                <tr>
+                                    <th>Description:</th>
+                                    <td id="preview-pack-description"></td>
+                                </tr>
+                                <tr>
+                                    <th>Creator:</th>
+                                    <td id="preview-creator-name"></td>
+                                </tr>
+                                <tr>
+                                    <th>Version:</th>
+                                    <td id="preview-pack-version"></td>
+                                </tr>
+                                <tr>
+                                    <th>Total Capes:</th>
+                                    <td id="preview-cape-count"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="preview-capes">
+                            <h3>Your Capes</h3>
+                            <div id="preview-cape-list" class="preview-cape-items">
+                                <!-- Cape previews will be added dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="preview-model">
+                            <h3>3D Preview</h3>
+                            <div id="player-model-preview" class="model-container">
+                                <div class="player-model">
+                                    <div class="cape-preview-canvas-container">
+                                        <canvas id="cape-preview-canvas"></canvas>
+                                    </div>
+                                    <div class="cape-controls">
+                                        <div class="cape-selector">
+                                            <label for="preview-cape-select">Select Cape:</label>
+                                            <select id="preview-cape-select">
+                                                <!-- Options will be added dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="view-mode-toggle">
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" id="view-mode-toggle">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-label">Cape</span>
+                                                <span class="toggle-label">Elytra</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="buttons">
+                        <button id="step3-prev" class="btn prev-btn">Previous: Upload Capes</button>
+                        <button id="step3-next" class="btn next-btn">Next: Download</button>
+                    </div>
+                </section>
+
+                <!-- Step 4: Download -->
+                <section id="step4" class="step-content">
+                    <h2>Download Your Cape Pack</h2>
+                    <p>Your custom cape pack is ready! Download it in .mcpack format for Minecraft Bedrock Edition.</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option">
+                            <div class="download-icon">
+                                <i class="fas fa-file-archive"></i>
+                            </div>
+                            <h3>.mcpack Format</h3>
+                            <p>Ready to import directly into Minecraft for Bedrock Edition.</p>
+                            <button id="download-mcpack" class="btn download-btn">Download .mcpack</button>
+                        </div>
+                    </div>
+                    
+                    <div class="installation-guide">
+                        <h3>Installation Guide</h3>
+                        <div class="tab-content active" id="bedrock-content">
+                            <ol>
+                                <li>Download the .mcpack file</li>
+                                <li>Open the file to automatically import into Minecraft</li>
+                                <li>Launch Minecraft and go to Settings > Global Resources</li>
+                                <li>Activate your cape pack from the list</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="buttons">
+                        <button id="step4-prev" class="btn prev-btn">Previous: Preview</button>
+                        <button id="create-new-pack" class="btn">Create Another Pack</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Tutorial Modal -->
+        <div id="tutorial-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>How to Create and Use Custom Capes</h2>
+                
+                <div class="tutorial-section">
+                    <h3>Creating Your Cape Pack</h3>
+                    <ol>
+                        <li>
+                            <strong>Set Pack Information:</strong>
+                            <p>Start by naming your pack and adding a description. This information will appear in the game.</p>
+                        </li>
+                        <li>
+                            <strong>Upload Cape Designs:</strong>
+                            <p>Add one or more cape images. For best results, use 128×64 pixel PNG images with transparent backgrounds.</p>
+                        </li>
+                        <li>
+                            <strong>Preview and Customize:</strong>
+                            <p>Review your pack and see how your capes will look in the game using our 3D model viewer.</p>
+                        </li>
+                        <li>
+                            <strong>Download and Install:</strong>
+                            <p>Download your pack as an .mcpack file, then open it to automatically import into Minecraft Bedrock Edition.</p>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="tutorial-section">
+                    <h3>Designing Effective Capes</h3>
+                    <ul>
+                        <li>
+                            <strong>Size Matters:</strong>
+                            <p>The standard size for cape images is 128×64 pixels. Other sizes will be adjusted, but may look distorted.</p>
+                        </li>
+                        <li>
+                            <strong>Transparency:</strong>
+                            <p>Keep the appropriate areas transparent for proper in-game cape rendering. Only the central part of the image will be visible as the cape.</p>
+                        </li>
+                        <li>
+                            <strong>Design Template:</strong>
+                            <p>Download our <a href="#" id="download-template">cape template</a> to ensure your design fits properly on the Minecraft character model.</p>
+                        </li>
+                        <li>
+                            <strong>Naming:</strong>
+                            <p>Each cape needs a unique name using only letters, numbers, and underscores (no spaces or special characters).</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tutorial-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="faq-item">
+                        <h4>Will these capes be visible to other players?</h4>
+                        <p>These custom capes are client-side only. Only you will see your custom cape in-game.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Does this work with Minecraft Pocket Edition?</h4>
+                        <p>Yes, this works with all versions of Minecraft Bedrock Edition, including mobile devices.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I edit my pack after creating it?</h4>
+                        <p>Currently, you'll need to create a new pack with your updated designs. We're working on adding a save/edit feature in the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Modal -->
+        <div id="donation-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Support Cape Creator</h2>
+                <p>If you enjoy using this tool and would like to support its continued development, consider donating. Every contribution helps keep this tool free and improving!</p>
+                
+                <div class="donation-options">
+                    <div class="donation-option">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        <h3>Support DaDevMikey</h3>
+                        <button class="btn donate-btn" data-method="paypal">Donate via Ko-Fi</button>
+                    </div>
+                    
+                    <div class="donation-option">
+                        <i class="fa-brands fa-bitcoin"></i>
+                        <h3>Support PizKar</h3>
+                        <button class="btn donate-btn" data-method="crypto">Donate with Bitcoin</button>
+                    </div>
+                </div>
+                
+                <div class="donation-message">
+                    <h3>What Your Support Enables:</h3>
+                    <ul>
+                        <li>Server costs and maintenance</li>
+                        <li>New features and improvements</li>
+                        <li>Development of more Minecraft tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Minecraft Cape Creator | Not affiliated with Mojang or Microsoft</p>
+            <div class="footer-links">
+                <a href="#" id="privacy-link">Privacy Policy</a>
+                <a href="#" id="terms-link">Terms of Use</a>
+                <a href="https://discord.gg/BDKPuZmsVE" id="contact-link" target="_blank">Contact</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

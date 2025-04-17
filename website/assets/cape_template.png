@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="64" viewBox="0 0 128 64">
+  <rect width="128" height="64" fill="#ffffff" fill-opacity="0.1" />
+  
+  <!-- Guide grid -->
+  <g stroke="#000000" stroke-opacity="0.2" stroke-width="0.5">
+    <!-- Vertical lines -->
+    <line x1="0" y1="0" x2="0" y2="64" />
+    <line x1="16" y1="0" x2="16" y2="64" />
+    <line x1="32" y1="0" x2="32" y2="64" />
+    <line x1="48" y1="0" x2="48" y2="64" />
+    <line x1="64" y1="0" x2="64" y2="64" />
+    <line x1="80" y1="0" x2="80" y2="64" />
+    <line x1="96" y1="0" x2="96" y2="64" />
+    <line x1="112" y1="0" x2="112" y2="64" />
+    <line x1="128" y1="0" x2="128" y2="64" />
+    
+    <!-- Horizontal lines -->
+    <line x1="0" y1="0" x2="128" y2="0" />
+    <line x1="0" y1="16" x2="128" y2="16" />
+    <line x1="0" y1="32" x2="128" y2="32" />
+    <line x1="0" y1="48" x2="128" y2="48" />
+    <line x1="0" y1="64" x2="128" y2="64" />
+  </g>
+  
+  <!-- Cape outline -->
+  <rect x="1" y="1" width="126" height="62" stroke="#5D87AA" stroke-width="2" fill="none" />
+  
+  <!-- Design area marker -->
+  <rect x="2" y="2" width="124" height="60" fill="#5D87AA" fill-opacity="0.1" />
+  
+  <!-- Center cross -->
+  <line x1="64" y1="0" x2="64" y2="64" stroke="#FF0000" stroke-opacity="0.5" stroke-width="1" />
+  <line x1="0" y1="32" x2="128" y2="32" stroke="#FF0000" stroke-opacity="0.5" stroke-width="1" />
+  
+  <!-- Labels -->
+  <text x="64" y="12" font-family="Arial" font-size="10" fill="#000000" text-anchor="middle">Top</text>
+  <text x="64" y="60" font-family="Arial" font-size="10" fill="#000000" text-anchor="middle">Bottom</text>
+  <text x="10" y="32" font-family="Arial" font-size="10" fill="#000000" text-anchor="middle" transform="rotate(-90,10,32)">Left</text>
+  <text x="118" y="32" font-family="Arial" font-size="10" fill="#000000" text-anchor="middle" transform="rotate(90,118,32)">Right</text>
+  
+  <!-- Guide text -->
+  <text x="64" y="32" font-family="Arial" font-size="12" fill="#000000" text-anchor="middle">Design Your Cape Here</text>
+</svg>
+

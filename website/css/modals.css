@@ -1,0 +1,153 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, var(--modal-bg-opacity, 0.7));
+    animation: fadeIn var(--modal-animation-duration, 300ms) ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content {
+    background-color: var(--dark-color);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow);
+    width: 80%;
+    max-width: var(--modal-max-width, 800px);
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    color: var(--text-color);
+    animation: slideDown var(--modal-animation-duration, 300ms) ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--error-color);
+}
+
+.policy-content {
+    line-height: 1.6;
+}
+
+.policy-content h3 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.policy-content h4 {
+    color: var(--primary-color);
+    margin: 20px 0 10px;
+    font-size: 1.1rem;
+}
+
+.policy-content p, .policy-content ul {
+    margin-bottom: 15px;
+}
+
+.policy-content ul {
+    padding-left: 20px;
+}
+
+.policy-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.policy-content a:hover {
+    text-decoration: underline;
+}
+
+.tutorial-section, .faq-item {
+    margin-bottom: 30px;
+}
+
+.tutorial-section h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.faq-item h4 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.donation-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.donation-option {
+    text-align: center;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background-color: rgba(65, 136, 126, 0.2);
+    border: 1px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.donation-option:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.donation-option i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.donation-option h3 {
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.donate-btn {
+    width: 100%;
+}
+
+.donation-message {
+    background-color: rgba(65, 136, 126, 0.2);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.donation-message h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.donation-message ul {
+    list-style-position: inside;
+}
+
